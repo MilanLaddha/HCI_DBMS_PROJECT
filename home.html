@@ -1,159 +1,167 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  font-family: "Lato", sans-serif;
-  margin: 0;
-  padding: 0;
-  overflow: hidden; /* prevent double scrollbar */
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+    }
 
-.header {
-  background-color: #004080;
-  color: white;
-  text-align: center;
-  padding: 8px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 2;
-}
+    /* Sidebar */
+    .sidebar {
+      width: 70px;
+      background: #0a2a57;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+      position: fixed;
+      left: 0;
+      top: 0;
+    }
 
-.header h1 {
-  margin: 5px 0;
-  font-size: 22px;
-}
+    .sidebar i {
+      font-size: 20px;
+      color: white;
+      margin: 25px 0;
+      cursor: pointer;
+    }
 
-.header p {
-  margin: 0;
-  font-size: 14px;
-}
+    .sidebar i:hover {
+      color: #ff4d4d;
+    }
 
-.sidenav {
-  height: calc(100% - 50px); /* full height minus header */
-  width: 200px;
-  position: fixed;
-  z-index: 1;
-  top: 50px; /* below header */
-  left: 0;
-  background-color: #111;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* push logout to bottom */
-}
+    /* Main Content */
+    .main-content {
+      margin-left: 90px;
+      padding: 20px;
+      width: calc(100% - 90px);
+    }
 
-.sidenav .links {
-  padding-top: 20px;
-}
+    .main-content h2 {
+      color: #d32f2f;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
 
-.sidenav a {
-  padding: 10px 6px 10px 32px;
-  text-decoration: none;
-  font-size: 18px;
-  color: #818181;
-  display: block;
-  cursor: pointer;
-}
+    /* Dashboard Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
 
-.sidenav a:hover {
-  color: #f1f1f1;
-}
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
 
-.logout-btn {
-  background-color: #c0392b;
-  color: white !important;
-  text-align: center;
-  margin: 15px auto;
-  padding: 10px 20px;
-  border-radius: 6px;
-  font-weight: bold;
-  width: 120px;  /* fixed width */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    .card:hover {
+      transform: translateY(-5px);
+    }
 
-.logout-btn:hover {
-  background-color: #e74c3c;
-}
+    .card i {
+      font-size: 30px;
+      color: #c62828;
+    }
 
-.main {
-  position: fixed;
-  top: 50px;       /* below header */
-  left: 200px;     /* beside sidebar */
-  right: 0;
-  bottom: 0;
-  padding: 20px;
-  overflow-y: auto; /* scrolling enabled */
-}
-</style>
+    .card-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-text strong {
+      font-size: 15px;
+      color: #000;
+    }
+
+    .card-text span {
+      font-size: 13px;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
 
-<div class="header">
-  <h1>ABC College of Engineering</h1>
-  <p>123 Main Street, Pune, Maharashtra | Phone: +91-9876543210</p>
-</div>
-
-<div class="sidenav">
-  <div class="links">
-    <a onclick="loadContent('about')">About</a>
-    <a onclick="loadContent('services')">Services</a>
-    <a onclick="loadContent('clients')">Clients</a>
-    <a onclick="loadContent('contact')">Contact</a>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <i class="fa-solid fa-gear"></i>
+    <i class="fa-solid fa-home"></i>
+    <i class="fa-solid fa-user"></i>
+    <i class="fa-solid fa-file"></i>
+    <i class="fa-solid fa-book"></i>
+    <i class="fa-solid fa-users"></i>
+    <i class="fa-solid fa-user-circle"></i>
+    <i class="fa-solid fa-circle-info"></i>
   </div>
-  <a href="#" class="logout-btn" onclick="logout()">Logout</a>
-</div>
 
-<div class="main" id="mainContent">
-  <h2>Welcome</h2>
-  <p>Select an option from the sidebar to load content here.</p>
-</div>
+  <!-- Main Content -->
+  <div class="main-content">
+    <h2>Dashboard</h2>
+    <div class="grid">
+      <div class="card">
+        <i class="fa-solid fa-file-pen"></i>
+        <div class="card-text">
+          <strong>Create</strong>
+          <span>Meeting Notice</span>
+        </div>
+      </div>
 
-<script>
-function loadContent(section) {
-  let content = '';
+      <div class="card">
+        <i class="fa-solid fa-file-lines"></i>
+        <div class="card-text">
+          <strong>Fill</strong>
+          <span>MoM</span>
+        </div>
+      </div>
 
-  if (section === 'about') {
-    content = `
-      <h2>About Us</h2>
-      <p>ABC College of Engineering was established in 1990 with the vision to provide quality technical education.</p>
-      <p>Our mission is to create skilled engineers ready to face global challenges.</p>
-    `;
-  } else if (section === 'services') {
-    content = `
-      <h2>Our Services</h2>
-      <ul>
-        <li>Undergraduate Programs</li>
-        <li>Postgraduate Programs</li>
-        <li>Research and Development</li>
-        <li>Industry Collaboration</li>
-      </ul>
-    `;
-  } else if (section === 'clients') {
-    content = `
-      <h2>Our Clients / Partners</h2>
-      <p>We collaborate with top industries and research institutes to provide practical exposure to students.</p>
-    `;
-  } else if (section === 'contact') {
-    content = `
-      <h2>Contact Us</h2>
-      <p>Email: info@abccollege.edu</p>
-      <p>Phone: +91-9876543210</p>
-    `;
-  }
+      <div class="card">
+        <i class="fa-solid fa-calendar-days"></i>
+        <div class="card-text">
+          <strong>Schedule</strong>
+          <span>New Meeting</span>
+        </div>
+      </div>
 
-  document.getElementById("mainContent").innerHTML = content;
-}
+      <div class="card">
+        <i class="fa-solid fa-people-group"></i>
+        <div class="card-text">
+          <strong>View</strong>
+          <span>Committees</span>
+        </div>
+      </div>
 
-function logout() {
-  alert("You have logged out!");
-  // Example: window.location.href = "login.html";
-}
-</script>
+      <div class="card">
+        <i class="fa-solid fa-list-check"></i>
+        <div class="card-text">
+          <strong>Task</strong>
+          <span>Tracker</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-chart-bar"></i>
+        <div class="card-text">
+          <strong>Reports</strong>
+          <span>Analytics</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
