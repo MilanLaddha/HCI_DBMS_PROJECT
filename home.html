@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* prevent double scrollbar */
+}
+
+.header {
+  background-color: #004080;
+  color: white;
+  text-align: center;
+  padding: 8px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.header h1 {
+  margin: 5px 0;
+  font-size: 22px;
+}
+
+.header p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.sidenav {
+  height: calc(100% - 50px); /* full height minus header */
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 50px; /* below header */
+  left: 0;
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* push logout to bottom */
+}
+
+.sidenav .links {
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 10px 6px 10px 32px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  display: block;
+  cursor: pointer;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.logout-btn {
+  background-color: #c0392b;
+  color: white !important;
+  text-align: center;
+  margin: 15px auto;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  width: 120px;  /* fixed width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logout-btn:hover {
+  background-color: #e74c3c;
+}
+
+.main {
+  position: fixed;
+  top: 50px;       /* below header */
+  left: 200px;     /* beside sidebar */
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  overflow-y: auto; /* scrolling enabled */
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>ABC College of Engineering</h1>
+  <p>123 Main Street, Pune, Maharashtra | Phone: +91-9876543210</p>
+</div>
+
+<div class="sidenav">
+  <div class="links">
+    <a onclick="loadContent('about')">About</a>
+    <a onclick="loadContent('services')">Services</a>
+    <a onclick="loadContent('clients')">Clients</a>
+    <a onclick="loadContent('contact')">Contact</a>
+  </div>
+  <a href="#" class="logout-btn" onclick="logout()">Logout</a>
+</div>
+
+<div class="main" id="mainContent">
+  <h2>Welcome</h2>
+  <p>Select an option from the sidebar to load content here.</p>
+</div>
+
+<script>
+function loadContent(section) {
+  let content = '';
+
+  if (section === 'about') {
+    content = `
+      <h2>About Us</h2>
+      <p>ABC College of Engineering was established in 1990 with the vision to provide quality technical education.</p>
+      <p>Our mission is to create skilled engineers ready to face global challenges.</p>
+    `;
+  } else if (section === 'services') {
+    content = `
+      <h2>Our Services</h2>
+      <ul>
+        <li>Undergraduate Programs</li>
+        <li>Postgraduate Programs</li>
+        <li>Research and Development</li>
+        <li>Industry Collaboration</li>
+      </ul>
+    `;
+  } else if (section === 'clients') {
+    content = `
+      <h2>Our Clients / Partners</h2>
+      <p>We collaborate with top industries and research institutes to provide practical exposure to students.</p>
+    `;
+  } else if (section === 'contact') {
+    content = `
+      <h2>Contact Us</h2>
+      <p>Email: info@abccollege.edu</p>
+      <p>Phone: +91-9876543210</p>
+    `;
+  }
+
+  document.getElementById("mainContent").innerHTML = content;
+}
+
+function logout() {
+  alert("You have logged out!");
+  // Example: window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>
