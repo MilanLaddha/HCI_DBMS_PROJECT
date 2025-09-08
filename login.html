@@ -3,165 +3,169 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>PCCOER Login</title>
   <style>
     body {
       margin: 0;
+      padding: 0;
       font-family: Arial, sans-serif;
-      background: #f5f5f5;
+      background-color: #f0f0f0;
       display: flex;
-    }
-
-    /* Sidebar */
-    .sidebar {
-      width: 70px;
-      background: #0a2a57;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 20px 0;
-      position: fixed;
-      left: 0;
-      top: 0;
+      height: 100vh;
     }
 
-    .sidebar i {
-      font-size: 20px;
-      color: white;
-      margin: 25px 0;
-      cursor: pointer;
+    .container {
+      text-align: center;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      width: 400px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
-    .sidebar i:hover {
-      color: #ff4d4d;
+    .logo img {
+      width: 90px;
+      margin-bottom: 15px;
     }
 
-    /* Main Content */
-    .main-content {
-      margin-left: 90px;
-      padding: 20px;
-      width: calc(100% - 90px);
+    .college-name {
+      font-weight: bold;
+      font-size: 16px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
     }
 
-    .main-content h2 {
-      color: #d32f2f;
-      font-size: 22px;
+    .subtitle {
+      color: #004080;
+      font-weight: bold;
+      font-size: 14px;
       margin-bottom: 20px;
     }
 
-    /* Dashboard Grid */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .card {
-      background: #fff;
+    .form-box {
+      background: #f9f9f9;
       padding: 20px;
       border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .form-box input[type="email"],
+    .form-box input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      margin: 10px 0;
+    }
+
+    .options label {
       display: flex;
       align-items: center;
-      gap: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
-      transition: transform 0.2s;
+      gap: 5px;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
+    .options a {
+      color: #004080;
+      text-decoration: none;
     }
 
-    .card i {
-      font-size: 30px;
-      color: #c62828;
+    .options a:hover {
+      text-decoration: underline;
     }
 
-    .card-text {
+    .buttons {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
+      margin-top: 15px;
     }
 
-    .card-text strong {
-      font-size: 15px;
-      color: #000;
+    .buttons button {
+      flex: 1;
+      margin: 5px;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
     }
 
-    .card-text span {
-      font-size: 13px;
-      color: #555;
+    .login-btn {
+      background-color: #002147;
+      color: white;
+    }
+
+    .login-btn:hover {
+      background-color: #003366;
+    }
+
+    .signup-btn {
+      background-color: #e0e0e0;
+      color: black;
+    }
+
+    .signup-btn:hover {
+      background-color: #d5d5d5;
     }
   </style>
 </head>
 <body>
 
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <i class="fa-solid fa-gear"></i>
-    <i class="fa-solid fa-home"></i>
-    <i class="fa-solid fa-user"></i>
-    <i class="fa-solid fa-file"></i>
-    <i class="fa-solid fa-book"></i>
-    <i class="fa-solid fa-users"></i>
-    <i class="fa-solid fa-user-circle"></i>
-    <i class="fa-solid fa-circle-info"></i>
-  </div>
+  <div class="container">
+    <div class="logo">
+      <!-- Replace with actual college logo -->
+      <img src="pccoerlogo.png" alt="College Logo">
+    </div>
+    <div class="college-name">
+      Pimpri Chinchwad Educational Trust’s<br>
+      Pimpri Chinchwad College of Engineering and Research
+    </div>
+    <div class="subtitle">“Welcome Back! Please log in to continue.”</div>
 
-  <!-- Main Content -->
-  <div class="main-content">
-    <h2>Dashboard</h2>
-    <div class="grid">
-      <div class="card">
-        <i class="fa-solid fa-file-pen"></i>
-        <div class="card-text">
-          <strong>Create</strong>
-          <span>Meeting Notice</span>
+    <div class="form-box">
+      <form id="loginForm">
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <input type="password" id="password" placeholder="Enter your password" required>
+        
+        <div class="options">
+          <label><input type="checkbox"> Remember me</label>
+          <a href="#">Forgot Password?</a>
         </div>
-      </div>
 
-      <div class="card">
-        <i class="fa-solid fa-file-lines"></i>
-        <div class="card-text">
-          <strong>Fill</strong>
-          <span>MoM</span>
+        <div class="buttons">
+          <button type="submit" class="login-btn">LOGIN</button>
+          <button type="button" class="signup-btn">Sign Up</button>
         </div>
-      </div>
-
-      <div class="card">
-        <i class="fa-solid fa-calendar-days"></i>
-        <div class="card-text">
-          <strong>Schedule</strong>
-          <span>New Meeting</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <i class="fa-solid fa-people-group"></i>
-        <div class="card-text">
-          <strong>View</strong>
-          <span>Committees</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <i class="fa-solid fa-list-check"></i>
-        <div class="card-text">
-          <strong>Task</strong>
-          <span>Tracker</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <i class="fa-solid fa-chart-bar"></i>
-        <div class="card-text">
-          <strong>Reports</strong>
-          <span>Analytics</span>
-        </div>
-      </div>
+      </form>
     </div>
   </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      if(email && password) {
+        alert("Login successful for: " + email);
+        // Redirect example:
+        // window.location.href = "dashboard.html";
+      } else {
+        alert("Please enter valid details.");
+      }
+    });
+  </script>
 
 </body>
 </html>
