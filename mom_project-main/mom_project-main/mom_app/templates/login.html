@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - MoM Organizer</title>
+    
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling: Gradient Background */
+        body {
+            font-family: 'Arial', sans-serif;
+            /* Gradient for a catchy look */
+            background: linear-gradient(135deg, #cd61ed 0%, #3271c9 100%);
+            color: #333;
+            line-height: 1.6;
+            height: 100vh;
+            /* Center login content vertically and horizontally */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; 
+        }
+
+        /* Login Container (Only needed for centering the main box) */
+        .login-container {
+            width: 100%;
+            max-width: 400px; /* Constrain its width */
+            padding: 0 20px;
+        }
+
+        /* Login Box Styling: Visible and Elevated */
+        .login-box {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            /* Shadow for lift against the gradient */
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18); 
+            width: 100%;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .login-box:hover {
+            transform: translateY(-4px); 
+        }
+
+        /* Header Styling (Now inside the box) */
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px; /* Space between header group and form */
+            padding-bottom: 20px; /* Separator padding */
+            border-bottom: 1px solid #e0e0e0; /* Subtle separator line */
+        }
+
+        /* Logo Styling */
+        .login-page-logo {
+            width: 90px;
+            height: auto;
+            margin-bottom: 15px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Title Text */
+        .page-header h1 {
+            font-size: 28px; /* Slightly smaller to fit better inside the box */
+            color: #002244;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* Input Group: Sleek Underline Style */
+        .input-group {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 0;
+            font-size: 16px;
+            border: none;
+            border-bottom: 2px solid #ccc;
+            border-radius: 0;
+            outline: none;
+            transition: border-bottom-color 0.3s ease;
+            background-color: transparent;
+        }
+
+        .input-group input:focus {
+            border-bottom-color: #0066cc;
+        }
+
+        /* Button: Large, Bold, and Attention-Grabbing */
+        .login-btn {
+            width: 100%;
+            padding: 18px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s, transform 0.3s;
+            margin-top: 20px;
+            box-shadow: 0 6px 15px rgba(0, 102, 204, 0.4);
+        }
+
+        .login-btn:hover {
+            background-color: #0056b3;
+            box-shadow: 0 8px 20px rgba(0, 102, 204, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Error Message */
+        .error-msg {
+            color: #d10000;
+            font-size: 14px;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        
+        <div class="login-box">
+            <div class="page-header">
+                <img src="{% static 'images/pccoerlogo.png' %}" alt="MoM Organizer Logo" class="login-page-logo">
+                <h1>MoM Organizer Login</h1>
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input type="text" name="username" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+            {% if error %}
+                <p class="error-msg">{{ error }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
